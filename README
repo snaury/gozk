@@ -1,1 +1,13 @@
 Check out https://wiki.ubuntu.com/gozk
+
+WARNING: This is a private fork of gozk.
+
+For the official repository please visit:
+
+	http://launchpad.net/gozk
+
+NOTE: Despite import path being:
+
+	github.com/snaury/gozk
+
+The package name is zookeeper, not gozk.

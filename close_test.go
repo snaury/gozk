@@ -1,9 +1,9 @@
 package zookeeper_test
 
 import (
+	zk "github.com/snaury/gozk"
 	"io"
 	. "launchpad.net/gocheck"
-	zk "launchpad.net/gozk/zookeeper"
 	"log"
 	"net"
 	"time"
