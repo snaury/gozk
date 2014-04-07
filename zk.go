@@ -511,8 +511,10 @@ func (conn *Conn) Get(path string) (data string, stat *Stat, err error) {
 		return "", nil, zkError(rc, cerr, "get", path)
 	}
 
-	result := C.GoStringN(cbuffer, cbufferLen)
-	return result, &cstat, nil
+	if cbufferLen != -1 {
+		data = C.GoStringN(cbuffer, cbufferLen)
+	}
+	return data, &cstat, nil
 }
 
 // GetW works like Get but also returns a channel that will receive
@@ -541,8 +543,10 @@ func (conn *Conn) GetW(path string) (data string, stat *Stat, watch <-chan Event
 		return "", nil, nil, zkError(rc, cerr, "getw", path)
 	}
 
-	result := C.GoStringN(cbuffer, cbufferLen)
-	return result, &cstat, watchChannel, nil
+	if cbufferLen != -1 {
+		data = C.GoStringN(cbuffer, cbufferLen)
+	}
+	return data, &cstat, watchChannel, nil
 }
 
 // Children returns the children list and status from an existing node.
